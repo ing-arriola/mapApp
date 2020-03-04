@@ -31,13 +31,20 @@ class UI {
         this.markers.clearLayers()
         data.forEach(element => {
             const {longitude,latitude,regular,premium,calle}=element
+            //Add a popup
+            const popup=L.popup()
+                            .setContent(`<p>Calle: ${calle}</p>
+                                         <p><b>Regular</b>: ${regular}</p>
+                                         <p><b>Premium</b>: ${premium}</p>`)
             //add pin
             const marker=L.marker([
                 parseFloat(latitude),
                 parseFloat(longitude)
-            ])
+            ]).bindPopup(popup)
+            //Add markers to the layer
             this.markers.addLayer(marker)
         });
+        //Add layer to the map
         this.markers.addTo(this.mapa)
 
     }
