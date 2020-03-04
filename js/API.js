@@ -1,8 +1,9 @@
 class UI {
     constructor() {
         this.api=new API()
+        this.markers= new L.LayerGroup()
          // Iniciar el mapa
-         this.mapa = this.inicializarMapa();
+        this.mapa = this.inicializarMapa();
 
     }
 
@@ -27,6 +28,17 @@ class UI {
     }
     showPointsOnMap(data){
         console.log(data)
+        this.markers.clearLayers()
+        data.forEach(element => {
+            const {longitude,latitude,regular,premium,calle}=element
+            //add pin
+            const marker=L.marker([
+                parseFloat(latitude),
+                parseFloat(longitude)
+            ])
+            this.markers.addLayer(marker)
+        });
+        this.markers.addTo(this.mapa)
 
     }
 }
