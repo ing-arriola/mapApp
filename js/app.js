@@ -8,8 +8,9 @@ const searcher=document.querySelector('#buscar input')
 
 searcher.addEventListener('input',()=>{
     if (searcher.value.length>3) {
-        console.log('hoy si')
         ui.searchSuggestions(searcher.value)    
+    }else{
+        ui.showLocals()
     }
     
 })

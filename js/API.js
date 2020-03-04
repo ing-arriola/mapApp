@@ -53,11 +53,13 @@ class UI {
         this.api.getData()
             .then(data=>{
                 const res=data.results
-                resultsFilter(res,textToBeSearched)
+                this.resultsFilter(res,textToBeSearched)
             })
     }
 
     resultsFilter(results,search){
-
+        const filt=results.filter(element => element.calle.indexOf(search) !== -1)
+        //console.log(filt)
+        this.showPointsOnMap(filt)
     }
 }
