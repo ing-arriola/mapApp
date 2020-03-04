@@ -1,6 +1,6 @@
 class UI {
     constructor() {
-
+        this.api=new API()
          // Iniciar el mapa
          this.mapa = this.inicializarMapa();
 
@@ -16,6 +16,17 @@ class UI {
              maxZoom: 18,
              }).addTo(map);
          return map;
+
+    }
+    showLocals(){
+        this.api.getData()
+            .then(data=>{
+                const resultData=data.results
+                this.showPointsOnMap(resultData)
+            })
+    }
+    showPointsOnMap(data){
+        console.log(data)
 
     }
 }
