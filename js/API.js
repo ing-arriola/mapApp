@@ -27,7 +27,7 @@ class UI {
             })
     }
     showPointsOnMap(data){
-        console.log(data)
+        //console.log(data)
         this.markers.clearLayers()
         data.forEach(element => {
             const {longitude,latitude,regular,premium,calle}=element
@@ -46,6 +46,18 @@ class UI {
         });
         //Add layer to the map
         this.markers.addTo(this.mapa)
+
+    }
+
+    searchSuggestions(textToBeSearched){
+        this.api.getData()
+            .then(data=>{
+                const res=data.results
+                resultsFilter(res,textToBeSearched)
+            })
+    }
+
+    resultsFilter(results,search){
 
     }
 }
